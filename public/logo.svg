@@ -1,0 +1,14 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="64" height="64" rx="12" fill="#fff"/>
+  <g>
+    <!-- House outline -->
+    <path d="M16 32 L32 16 L48 32 V48 H16 V32 Z" stroke="#B91C1C" stroke-width="2.5" fill="none"/>
+    <!-- Door -->
+    <rect x="28" y="38" width="8" height="10" rx="2" fill="#B91C1C"/>
+    <!-- Minimal K inside house -->
+    <path d="M22 40 V28" stroke="#222" stroke-width="2" stroke-linecap="round"/>
+    <path d="M22 34 L28 40" stroke="#222" stroke-width="2" stroke-linecap="round"/>
+    <path d="M22 34 L28 28" stroke="#222" stroke-width="2" stroke-linecap="round"/>
+  </g>
+  <text x="32" y="60" text-anchor="middle" font-size="10" fill="#B91C1C" font-family="sans-serif" font-weight="bold">Kingsukh</text>
+</svg> 
