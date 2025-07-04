@@ -26,7 +26,7 @@ This is a modern, responsive web application built with Next.js and React, desig
 
 1. **Clone the repository:**
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/hey-virender/kingsukh-guest-house
    cd kingsukh
    ```
 2. **Install dependencies:**
