@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Image from "next/image";
 
@@ -11,32 +11,47 @@ const navItems = [
   },
   {
     label: "About",
-    href: "/about",
+    href: "#about-us",
   },
   {
     label: "Services",
-    href: "/services",
+    href: "#services",
   },
   {
     label: "Rooms",
-    href: "/rooms",
+    href: "#living-rooms",
   },
   {
     label: "Gallery",
-    href: "/gallery",
+    href: "#gallery",
   },
   {
     label: "Contact",
-    href: "/contact",
+    href: "#contact",
   },
 ];
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
-    <nav className="sticky top-0 z-50 flex justify-between items-center py-3 rounded-lg   mt-4 mx-auto md:gap-4">
-      <div className=" flex flex-col justify-center items-center gap-2">
-        <Image src="/logo.svg" alt="logo" width={100} height={100} className="w-14 h-14 md:w-20 md:h-20" />
+    <nav
+      className={`z-50 flex justify-between items-center py-3 px-2 rounded-lg mt-4 mx-auto md:gap-4 fixed top-0 left-0 w-full transition-all duration-300 ${
+        scrolled ? "bg-white shadow-lg" : "bg-transparent"
+      }`}
+      style={{ backdropFilter: scrolled ? "saturate(180%) blur(10px)" : undefined }}
+    >
+      <div className=" flex  justify-center items-center gap-2">
+        <Image src="/logo.svg" alt="logo" width={100} height={100} className="w-10 h-10 object-cover" />
         <h1 className="hidden lg:block text-lg font-medium tracking-tighter text-red-700">
           Kingsukh Guest House
         </h1>
@@ -56,9 +71,10 @@ const Navbar = () => {
         </ul>
       </div>
       <div className="hidden md:block">
-        <button className="bg-red-600 text-white px-4 py-2 rounded-full shadow hover:bg-red-700 transition-colors duration-200 font-semibold">
+        <Link href="https://wa.link/at5ion" target="_blank">
+        <button className="bg-orange-600 text-white px-4 py-2 rounded-full shadow hover:bg-orange-700 transition-colors duration-200 font-semibold">
           Book Now
-        </button>
+        </button></Link>
       </div>
       <div className="md:hidden z-30">
         <button
@@ -71,13 +87,13 @@ const Navbar = () => {
       {/* Overlay for mobile menu */}
       {isOpen && (
         <div
-          className="fixed inset-0 bg-black bg-opacity-40 z-20 transition-opacity duration-300 md:hidden"
+          className="fixed inset-0 bg-black/60 z-20 transition-opacity duration-300 md:hidden"
           onClick={() => setIsOpen(false)}
         />
       )}
       {/* Mobile Sidebar */}
       <div
-        className={`fixed top-0 left-0 h-full w-3/4 max-w-xs bg-red-600 z-30 transform transition-transform duration-300 md:hidden
+        className={`fixed top-0 left-0 h-full w-3/4 max-w-xs bg-orange-600 z-40 transform transition-transform duration-300 md:hidden
           ${isOpen ? "translate-x-0" : "-translate-x-full"}
         `}
       >
